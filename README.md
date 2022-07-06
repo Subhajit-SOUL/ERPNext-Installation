@@ -1,7 +1,7 @@
-# ERPNext-installation-Guide
+# ERPNext-Installation-Guide
 ## The complete guide to install ERPNext in your Ubuntu system
 
-### Pre-requisites 
+### Pre-Requisites 
 
       Python 3.6+
       Node.js 14+
@@ -138,7 +138,7 @@ before next step and You must login.
     
     bench --version
     
-### STEP 13 initilise the frappe bench & install frappe latest version 
+### STEP 13 initilize the frappe bench & install frappe latest version 
 
     bench init frappe-bench --frappe-branch version-13
     
@@ -147,7 +147,7 @@ before next step and You must login.
     
 ### STEP 14 create a site in frappe bench 
     
-    bench new-site dcode.com
+    bench new-site erp.soulunileaders.com --db-name erpdb
 
 ### STEP 15 install ERPNext latest version in bench & site
 
@@ -155,7 +155,7 @@ before next step and You must login.
     ###OR
     bench get-app https://github.com/frappe/erpnext --branch version-13
 
-    bench --site dcode.com install-app erpnext
+    bench --site erp.soulunileaders.com install-app erpnext
     
     bench start
 
@@ -163,19 +163,19 @@ before next step and You must login.
 #
 #
 #
-### Optional step for cratetind production setup
+### Optional step for creation production setup
 
 ### STEP 16  Create a new user
 
-    sudo adduser dcode-frappe
-    sudo usermod -aG sudo dcode-frappe
-    su - dcode-frappe
+    sudo adduser erpnext
+    sudo usermod -aG sudo erpnext
+    su - erpnext
     
 ### Follow the steps from Step 12 to Step 15
 
 ### Step 17 setup production
     
-    sudo bench setup production dcode-frappe
+    sudo bench setup production erpnext
     bench restart
     
   Open the 0.0.0.0 or server IP in web browser and login to production server
