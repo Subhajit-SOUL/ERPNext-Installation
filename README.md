@@ -22,7 +22,7 @@ Git also makes collaboration easier, allowing changes by multiple people to all 
     
     sudo apt-get install git
 
-### STEP 2 install python-dev
+### STEP 2 Install python-dev
 python-dev is the package that contains the header files for the Python C API, 
 which is used by lxml because it includes Python C extensions for high performance.
 
@@ -85,7 +85,7 @@ the following command
 
     sudo nano /etc/mysql/my.cnf
 
-add this to the my.cnf file
+Add this to the my.cnf file
 
     [mysqld]
     character-set-client-handshake = FALSE
@@ -99,13 +99,13 @@ Now press (Ctrl-X) to exit
 
     sudo service mysql restart
 
-### STEP 8 install Redis
+### STEP 8 Install Redis
 Redis is an open source (BSD licensed), in-memory data structure store, used as a database, 
 cache, and message broker.
     
     sudo apt-get install redis-server
 
-### STEP 9 install Node.js 14.X package
+### STEP 9 Install Node.js 14.X package
 Node.js is an open source, cross-platform runtime environment for developing server-side and 
 networking applications. Node.js applications are written in JavaScript, and can be run within the Node.js
 runtime on OS X, Microsoft Windows, and Linux.
@@ -114,22 +114,29 @@ runtime on OS X, Microsoft Windows, and Linux.
     curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
     sudo apt-get install -y nodejs
 
-### STEP 10  install Yarn
+### STEP 10  Install Yarn
 Yarn is a JavaScript package manager that aims to be speedy, deterministic, and secure. 
 See how easy it is to drop yarn in where you were using npm before, and get faster, more reliable installs.
 Yarn is a package manager for JavaScript.
     
     sudo npm install -g yarn
 
-### STEP 11 install wkhtmltopdf
+### STEP 11 Install wkhtmltopdf
 Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables 
 user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc)
 
     sudo apt-get install xvfb libfontconfig wkhtmltopdf
     
-### if you have to setup production server go to Step 16 else continue 
 
-### STEP 12 install frappe-bench
+### Follow STEP 12 if the root user is the only user in the system continue from STEP 13
+
+### STEP 12 Create a new user
+
+    sudo adduser erpnext
+    sudo usermod -aG sudo erpnext
+    su - erpnext
+    
+### STEP 13 Install frappe-bench
 
     sudo -H pip3 install frappe-bench
 
@@ -138,18 +145,20 @@ before next step and You must login.
     
     bench --version
     
-### STEP 13 initilize the frappe bench & install frappe latest version 
+### STEP 14 Initilize the frappe bench & install frappe latest version 
 
     bench init frappe-bench --frappe-branch version-13
     
     cd frappe-bench/
     bench start
     
-### STEP 14 create a site in frappe bench 
+### STEP 15 Create a site in frappe bench 
     
+    bench --site <sitename> --db-name <dbname>
+    eg.
     bench new-site erp.soulunileaders.com --db-name erpdb
 
-### STEP 15 install ERPNext latest version in bench & site
+### STEP 16 Install ERPNext latest version in bench & site
 
     bench get-app erpnext --branch version-13
     ###OR
@@ -158,22 +167,13 @@ before next step and You must login.
     bench --site erp.soulunileaders.com install-app erpnext
     
     bench start
-
-
+#
 #
 #
 #
 ### Optional step for creation production setup
 
-### STEP 16  Create a new user
-
-    sudo adduser erpnext
-    sudo usermod -aG sudo erpnext
-    su - erpnext
-    
-### Follow the steps from Step 12 to Step 15
-
-### Step 17 setup production
+### Step 17 Setup production
     
     sudo bench setup production erpnext
     bench restart
@@ -184,12 +184,12 @@ before next step and You must login.
     
     
   
-  #### Port cofiguration for multiple site
-  
+### Step 18 Setup Multitenancy
+  Assuming that you've already got your first site running and you've performed the production deployment steps, this section explains how to host your   second site (and more). Your first site is automatically set as default site. You can change it with the command,
   
       bench use sitename
   
- 
+#### Port based multitenancy
 
     Switch off DNS based multitenancy (once)
 
@@ -211,9 +211,29 @@ before next step and You must login.
 
       sudo service nginx reload
       
-
     Reload supervisor
       sudo service supervisor restart
+      
+#### DNS based multitenancy
+You can name your sites as the hostnames that would resolve to it. Thus, all the sites you add to the bench would run on the same port and will be automatically selected based on the hostname.
+
+To make a new site under DNS based multitenancy, perform the following steps.
+
+      Switch on DNS based multitenancy (once)
+
+            bench config dns_multitenant on
+
+      Create a new site
+
+            bench new-site site2name
+
+      Re generate nginx config
+
+            bench setup nginx
+
+      Reload nginx
+
+            sudo service nginx reload
     
 ### others
 
@@ -223,12 +243,5 @@ before next step and You must login.
       sudo certbot --nginx -d example.com
       
       ./env/bin/python -m pip install -q -U -e /apps/frappe
-    
-    
-    
-    
-    
-    
-    
     
     
