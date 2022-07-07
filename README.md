@@ -154,7 +154,7 @@ before next step and You must login.
     
 ### STEP 15 Create a site in frappe bench 
     
-    bench --site <sitename> --db-name <dbname>
+    bench new-site <sitename> --db-name <dbname>
     eg.
     bench new-site erp.soulunileaders.com --db-name erpdb
 
@@ -187,7 +187,7 @@ before next step and You must login.
 ### Step 18 Setup Multitenancy
   Assuming that you've already got your first site running and you've performed the production deployment steps, this section explains how to host your   second site (and more). Your first site is automatically set as default site. You can change it with the command,
   
-      bench use sitename
+    bench use sitename
   
 #### Port based multitenancy
 
@@ -212,6 +212,7 @@ before next step and You must login.
       sudo service nginx reload
       
     Reload supervisor
+    
       sudo service supervisor restart
       
 #### DNS based multitenancy
@@ -219,21 +220,21 @@ You can name your sites as the hostnames that would resolve to it. Thus, all the
 
 To make a new site under DNS based multitenancy, perform the following steps.
 
-      Switch on DNS based multitenancy (once)
+    Switch on DNS based multitenancy (once)
 
-            bench config dns_multitenant on
+      bench config dns_multitenant on
 
-      Create a new site
+    Create a new site
 
-            bench new-site site2name
+      bench new-site site2name
 
-      Re generate nginx config
+    Re generate nginx config
 
-            bench setup nginx
+      bench setup nginx
 
-      Reload nginx
+    Reload nginx
 
-            sudo service nginx reload
+      sudo service nginx reload
     
 ### others
 
