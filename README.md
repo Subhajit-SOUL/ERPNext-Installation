@@ -236,13 +236,7 @@ To make a new site under DNS based multitenancy, perform the following steps.
 
       sudo service nginx reload
     
-### others
+### SSL Setup
 
-      sudo add-apt-repository ppa:certbot/certbot
-      sudo apt update
-      sudo apt install python-certbot-nginx
-      sudo certbot --nginx -d example.com
-      
-      ./env/bin/python -m pip install -q -U -e /apps/frappe
     
     
