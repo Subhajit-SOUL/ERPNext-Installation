@@ -159,7 +159,7 @@ before next step and You must login.
     
     bench new-site <sitename> --db-name <dbname>
     eg.
-    bench new-site erp.soulunileaders.com --db-name erpdb
+    bench new-site erp.com --db-name erpdb
 
 ### Install ERPNext latest version in bench & site
 
@@ -167,7 +167,7 @@ before next step and You must login.
     ###OR
     bench get-app https://github.com/frappe/erpnext --branch version-13
 
-    bench --site erp.soulunileaders.com install-app erpnext
+    bench --site erp.com install-app erpnext
     
     bench start
 #
