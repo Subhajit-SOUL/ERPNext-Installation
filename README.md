@@ -46,6 +46,8 @@ It's designed to allow you to work on multiple projects with different dependenc
 at the same time on the same machine.
     
     sudo apt-get install virtualenv
+    sudo apt install python3-venv
+
 
 ### Install MariaDB 10.3 stable package
 MariaDB is developed as open source software and as a relational database it provides an SQL interface 
