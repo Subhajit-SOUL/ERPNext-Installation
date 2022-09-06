@@ -201,10 +201,15 @@ before next step and You must login.
     sudo bench setup production erpnext
     bench restart
     
+  If 'bench restart' shows error then run the following command
+    
+    sudo supervisorctl restart all
+    
   Open the 0.0.0.0 or server IP in web browser and login to production server
     
+### If js and css file is not loading on login window run the following command
     
-    
+    sudo chmod o+x /home/erpnext
     
   
 ### Setup Multitenancy
