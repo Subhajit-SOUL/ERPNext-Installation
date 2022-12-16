@@ -108,11 +108,31 @@ the following command
 
     sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
 
-Replace this to the 50-server.cnf file
-    
-    https://github.com/Subhajit-SOUL/ERPNext-Installation/blob/17ce4abc7f8c7afe073badb5070acd9ab7bb7817/MariaDB/mariadb-10.6/50-server.cnf
-    
-Now press (Ctrl-X) to exit
+Once the file opens you need to locate the line where collation-server says general and you need to modify it to Unicode as below,
+
+    collation-server = utf8mb4_general_ci
+
+Modify above as below.
+
+    collation-server = utf8mb4_unicode_ci
+
+Now press (Ctrl-X) and Save then exit.
+
+And also locate my.cnf and edit the below configuration.
+
+    sudo nano /etc/mysql/my.cnf
+
+Make sure your configuration has the below lines in the file.
+
+    [mysqld]
+    character-set-client-handshake = FALSE
+    character-set-server = utf8mb4
+    collation-server = utf8mb4_unicode_ci
+
+    [mysql]
+    default-character-set = utf8mb4
+
+Now press (Ctrl-X) and Save then exit.
 
     sudo service mysql restart
 
@@ -128,8 +148,10 @@ networking applications. Node.js applications are written in JavaScript, and can
 runtime on OS X, Microsoft Windows, and Linux.
 
     sudo apt-get install curl
-    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-    sudo apt-get install -y nodejs
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+    source ~/.profile
+    nvm ls-remote
+    nvm install 16
 
 ### Install Yarn
 Yarn is a JavaScript package manager that aims to be speedy, deterministic, and secure. 
