@@ -158,6 +158,7 @@ Yarn is a JavaScript package manager that aims to be speedy, deterministic, and 
 See how easy it is to drop yarn in where you were using npm before, and get faster, more reliable installs.
 Yarn is a package manager for JavaScript.
     
+    sudo apt install npm -y
     sudo npm install -g yarn
 
 ### Install wkhtmltopdf
