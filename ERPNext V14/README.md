@@ -140,7 +140,8 @@ Redis is an open source (BSD licensed), in-memory data structure store, used as 
     
     sudo apt install redis-server -y
 ### Install Node.js 16 package
-
+##### Ref: https://github.com/nvm-sh/nvm
+    
     sudo apt install curl
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
     source ~/.profile
