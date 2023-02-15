@@ -139,28 +139,22 @@ Now press (Ctrl-X) and Save then exit.
 Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache, and message broker.
     
     sudo apt install redis-server -y
+### Install Node.js 16 package
 
-### Install Node.js 16.X package and npm
-Node.js is an open source, cross-platform runtime environment for developing server-side and networking applications. Node.js applications are written in JavaScript, and can be run within the Node.js runtime on OS X, Microsoft Windows, and Linux.
+    sudo apt install curl
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+    source ~/.profile
+    nvm install v16
 
-Reference Link: https://github.com/nodesource/distributions/blob/master/README.md
+Now it has been installed you can now check the version by typing the below command.
 
-    sudo apt-get install curl
-    curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-    sudo apt-get install -y nodejs
+    node -v
 
-You may also need development tools to build native addons:
-    sudo apt-get install gcc g++ make
+### Install Yarn using NPM
+Now we will install Yarn which is a software packaging system developed by Facebook for Node.js, this is open source, so we will install it using npm.
 
-Yarn is a JavaScript package manager that aims to be speedy, deterministic, and secure. 
-See how easy it is to drop yarn in where you were using npm before, and get faster, more reliable installs.
-To install the Yarn package manager, run:
-
-    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
-
-    echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-
-    sudo apt-get update && sudo apt-get install yarn
+    sudo apt install npm -y
+    sudo npm install -g yarn
 
 ### Install wkhtmltopdf
 Wkhtmltopdf is an open source simple and much effective command-line shell utility that enables user to convert any given HTML (Web Page) to PDF document or an image (jpg, png, etc)
