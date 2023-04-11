@@ -207,7 +207,7 @@ Now site is deployed, by default frappe application will be installed at site. D
 
 ### Install ERPNext latest version in bench & site
     
-    bench get-app payments
+    bench get-app payments --branch version-14
     
     bench get-app erpnext --branch version-14
                         Or
